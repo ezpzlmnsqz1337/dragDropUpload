@@ -37,6 +37,7 @@
         $.each(dt.files, function(key, value) {
             data.append(key, value);
         });
+
         console.log('Data: ', data);
         $.ajax({
             type: "POST",
@@ -50,4 +51,42 @@
                 console.log('File: ' + file.name + ' has started uploading!');
             }
         });
+    }
+
+    var url = 'php/upload.php';
+    var form = $('dropzone')[0];
+    // Listen for form submit
+    function formSubmit(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Gather files and begin FormData
+        var files = $('input[type=file]').files;
+        console.log(files);
+        var formData = new FormData();
+
+        // Append files to files array
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+
+            formData.append('files[]', file);
+        }
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: function(response) {
+                console.log(response);
+            }
+        });
+        return false;
+    }
+
+    function dropSub(e){
+        e.preventDefault();
+        e.stopPropagation();
+        // Define processing URL and form element 
+        console.log("SUBMIT!");
+        $('#dropzone')[0].submit();
+        return false;
     }

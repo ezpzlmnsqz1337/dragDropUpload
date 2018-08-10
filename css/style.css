@@ -26,7 +26,7 @@ body{
   box-sizing: inherit;
 }
 
-#dropzone{
+#dropzone input{
 	background-color: #ffffff;
 	border: 3px solid #E2F3FA;
 	border-radius: 2rem;
