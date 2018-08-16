@@ -10,10 +10,15 @@
   </head>
 
   <body>
-    <form action="upload.php" class="dropzone" method="POST" enctype="multipart/form-data" >
+    <form action="upload.php" class="dropzone" method="POST" enctype="multipart/form-data" id="dropzone">
       <input type="file" name="file" />
    </form>
 
    <script src="js/dropzone.js"></script>
+   <script>
+    Dropzone.options.dropzone = {
+      maxFileSize: 2048
+   }
+ </script>
   </body>
 </html>
